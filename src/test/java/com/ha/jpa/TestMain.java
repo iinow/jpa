@@ -186,4 +186,47 @@ public class TestMain {
 		cal.getTime().toString().split(" ")[0].toUpperCase();
 		System.out.println();
 	}
+	
+	@Test
+	public void °ø¹é() {
+		String s = "1 2 3 4";
+		String[] strs = s.split(" ");
+		
+		int max = Integer.MIN_VALUE;
+		int min = Integer.MAX_VALUE;
+		for(String str: strs) {
+			int v = Integer.parseInt(str);
+			
+			if(v > max) {
+				max = v;
+			}
+			
+			if(v < min) {
+				min = v;
+			}
+		}
+		System.out.println("max: "+max);
+		System.out.println("min: "+min);
+	}
+	
+	@Test
+	public void Çà·Ä°ö¼À() {
+		int[][] arr1 = {{1,2,3}, {2,3,4}};
+		int[][] arr2 = {{3,4},{5,6},{3,4}};
+		
+		int[][] res = new int[arr1.length][arr2[0].length];
+		int size = 0;
+		for(int[] a1: arr1) {
+			for(int i = 0; i < arr2[0].length; i++) {
+				int sum = 0;
+				for(int j = 0; j < arr2.length; j++) {
+					sum += a1[j] * arr2[j][i];
+					
+				}
+				res[size][i] = sum;
+			}
+			size++;
+		}
+		System.out.println(res);
+	}
 }
