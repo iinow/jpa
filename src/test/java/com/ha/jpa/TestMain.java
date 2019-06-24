@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
@@ -229,4 +230,31 @@ public class TestMain {
 		}
 		System.out.println(res);
 	}
+	
+	@Test
+	public void ¿ì¼±Å½»ö() {
+		int[] numbers = {1,1,1,1,1};
+		int target = 3;
+		
+		System.out.println(DFS(numbers, target, 0, 0));
+		
+		Stack<Integer> stack = new Stack<Integer>();
+	}
+	
+	public int DFS(int[] numbers, int target, int index, int num) {
+        if(index == numbers.length) {
+            return num == target ? 1 : 0;
+        } else {
+            return DFS(numbers, target, index + 1, num + numbers[index])
+                    + DFS(numbers, target, index + 1, num - numbers[index]);
+        }
+    }
+	/*
+	 * public int DFS_stack(Stack<Integer> stack, int size, int target) {
+	 * if(stack.size() == size) { int sum =
+	 * stack.stream().mapToInt(i->i.intValue()).sum(); return sum == target ? 1 : 0;
+	 * }
+	 * 
+	 * }
+	 */
 }
