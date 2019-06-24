@@ -257,4 +257,41 @@ public class TestMain {
 	 * 
 	 * }
 	 */
+	
+	@Test
+	public void 두정수합() {
+		int a = 0, b = 0;
+		
+		if(a == b) {
+//			return a;
+		}
+		
+		int cnt = Math.abs(a - b);
+		int sum = (cnt * ( a + b )) / 2;
+		
+	}
+	
+	//에라토스테네의 체 알고리즘 아래꺼가 아님 시작점 부터 제곱근으로 루프 돌려서 구함
+	@Test
+	public void 소수찾기() {
+		long stime = System.currentTimeMillis();
+		int n = 10;
+		int cnt = 0;
+		
+		for(int i = 2; i <= n; i++) {
+			boolean sosu = true;
+			for(int j = 2; j <= (int)Math.sqrt(i); j++) {
+				if(i % j == 0) {
+					sosu = false;
+					break;
+				}
+			}
+			if(sosu) {
+				cnt++;
+			}
+		}
+		long etime = System.currentTimeMillis();
+		System.out.println((etime - stime));
+		System.out.println(cnt);
+	}
 }
