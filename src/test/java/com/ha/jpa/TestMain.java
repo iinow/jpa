@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
@@ -228,5 +229,69 @@ public class TestMain {
 			size++;
 		}
 		System.out.println(res);
+	}
+	
+	@Test
+	public void 우선탐색() {
+		int[] numbers = {1,1,1,1,1};
+		int target = 3;
+		
+		System.out.println(DFS(numbers, target, 0, 0));
+		
+		Stack<Integer> stack = new Stack<Integer>();
+	}
+	
+	public int DFS(int[] numbers, int target, int index, int num) {
+        if(index == numbers.length) {
+            return num == target ? 1 : 0;
+        } else {
+            return DFS(numbers, target, index + 1, num + numbers[index])
+                    + DFS(numbers, target, index + 1, num - numbers[index]);
+        }
+    }
+	/*
+	 * public int DFS_stack(Stack<Integer> stack, int size, int target) {
+	 * if(stack.size() == size) { int sum =
+	 * stack.stream().mapToInt(i->i.intValue()).sum(); return sum == target ? 1 : 0;
+	 * }
+	 * 
+	 * }
+	 */
+	
+	@Test
+	public void 두정수합() {
+		int a = 0, b = 0;
+		
+		if(a == b) {
+//			return a;
+		}
+		
+		int cnt = Math.abs(a - b);
+		int sum = (cnt * ( a + b )) / 2;
+		
+	}
+	
+	//에라토스테네의 체 알고리즘 아래꺼가 아님 시작점 부터 제곱근으로 루프 돌려서 구함
+	@Test
+	public void 소수찾기() {
+		long stime = System.currentTimeMillis();
+		int n = 10;
+		int cnt = 0;
+		
+		for(int i = 2; i <= n; i++) {
+			boolean sosu = true;
+			for(int j = 2; j <= (int)Math.sqrt(i); j++) {
+				if(i % j == 0) {
+					sosu = false;
+					break;
+				}
+			}
+			if(sosu) {
+				cnt++;
+			}
+		}
+		long etime = System.currentTimeMillis();
+		System.out.println((etime - stime));
+		System.out.println(cnt);
 	}
 }
