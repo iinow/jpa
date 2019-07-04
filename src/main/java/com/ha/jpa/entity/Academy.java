@@ -34,6 +34,8 @@ public class Academy {
 
     @Column(name = "name", nullable = false, length = 10)
     private String name;
+    
+    private Integer age;
     private String address;
 
     @Builder

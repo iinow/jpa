@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQuery;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +25,9 @@ import lombok.Data;
 		pkColumnName = "SEQUENCE_NAME",
 		pkColumnValue = "BOARD_SEQ",
 		allocationSize = 1)
+@NamedQuery(
+		name = "Board.findByHello",
+		query = "select m from Board m where m.id = :id")
 public class Board {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "BOARD_SEQ_GENERATOR")
