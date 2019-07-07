@@ -15,6 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import lombok.Data;
 
 @Entity
@@ -39,8 +42,13 @@ public class Board {
 	@Enumerated(EnumType.ORDINAL)
 	private BOARDTYPE value = BOARDTYPE.ADMIN;
 	
+	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date = new Date();
+	private Date udt;
+	
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date cdt;
 	
 	@Lob
 	private String lobString; //clob 으로 매핑 char[]

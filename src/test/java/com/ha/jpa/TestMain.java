@@ -1,19 +1,19 @@
 package com.ha.jpa;
 
-import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.TreeMap;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
-
-import com.google.common.collect.Maps;
 
 public class TestMain {
 
@@ -293,5 +293,108 @@ public class TestMain {
 		long etime = System.currentTimeMillis();
 		System.out.println((etime - stime));
 		System.out.println(cnt);
+	}
+	
+	@Test
+	public void 더맵개() {
+		int[] scoville = {1,2,3,9,10,12};
+		int K = 7;
+		
+		//int scofil = 가장 안매운거 + (두번째로 안매운거 * 2);
+		//전부다 더 했는데도 k 값을 넘지 못하면 return -1;
+		
+		List<Integer> list = Arrays.stream(scoville).boxed().collect(Collectors.toList());
+		/*
+		 * list.sort((a, b)->{ if(a > b) { return -1; }else if(a < b) { return 1; }else
+		 * return 0; });
+		 */
+		list.sort(Comparator.reverseOrder());
+		
+		list.forEach(System.out::println);
+		
+		int res = 0;
+		int mixcnt = 0;
+		for(int i = list.size() - 1; i >= 0; i--) {
+			if(i == 0) {
+				if(list.get(i) >= K) {
+					res = mixcnt;
+				}else {
+					res = -1;
+				}
+				break;
+			}
+			int a = list.get(i);
+			if(a >= K) {
+				res = mixcnt;
+				break;
+			}
+				
+			int b = list.get(i-1);
+			int mix = a + b * 2;
+			mixcnt++;
+			list.set(i-1, mix);
+			list.remove(i);
+			list.sort(Comparator.reverseOrder());
+		}
+		System.out.println("res: "+res);
+		System.out.println("mixcnt: "+mixcnt);
+		list.forEach(System.out::println);
+	}
+	
+	private List<Integer> validate(List<Integer> list, int k){
+		int[] scoville = {1,2,3,9,10,12};
+		int K = 7;
+		Map<Integer, Integer> map = new TreeMap<>();
+		for(int i: scoville) {
+			map.put(i, 0);
+		}
+		return null;
+	}
+	
+	@Test
+	public void 레이저문제() {
+//		String arrangement = "()(((()())(())()))(())";
+		String arrangement = "((()))";
+		String res = arrangement.replaceAll("\\(\\)", "0");
+		System.out.println(res);
+		
+		int length = 0;
+		Stack<String> stack = new Stack<>();
+		for(char c: res.toCharArray()) {
+			String s = String.valueOf(c);
+			
+			if(s.equals("(")) {
+				stack.push(s);
+			}else if(s.equals("0")) {
+				length += stack.size();
+			}else if(s.equals(")")){
+				length += 1;
+				stack.pop();
+			}
+		}
+		System.out.println(length);
+	}
+	
+	@Test
+	public void 프린터() {
+		int loc = 2;
+		int[] priorities = {2,1,3,2};
+		int value = priorities[loc];
+		Queue<Integer> queue = new LinkedBlockingQueue<>();
+		for(int i: priorities) {
+			queue.add(priorities[i]);
+		}
+		
+		int cnt = 0;
+		while(true) {
+			if(cnt > priorities.length) {
+				cnt = 0;
+			}
+			//
+			
+			//
+			cnt++;
+		}
+		
 	}
 }

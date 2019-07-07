@@ -17,9 +17,9 @@ public class BoardService {
 	BoardRepository repository;
 	
 	@Transactional
-	public void setDate(long i) {
+	public Board setDate(long i) {
 		Board board = repository.findById(i).get();
-		board.setDate(new Date());
-		System.out.println(board.toString());
+		board.setLobString("Hello world");
+		return board;
 	}
 }
