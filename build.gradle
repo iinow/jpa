@@ -50,6 +50,13 @@ dependencies {
 	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
     compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+    
+    // https://mvnrepository.com/artifact/com.auth0/java-jwt
+	compile group: 'com.auth0', name: 'java-jwt', version: '3.8.1'
+	
+	//아래꺼를 구지 안써도 됨 spring 에서 sse 를 지원해주는 라이브러리 존재
+	// https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-sse
+	compile group: 'org.glassfish.jersey.media', name: 'jersey-media-sse', version: '2.29'
 	
 	// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
     testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'

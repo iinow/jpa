@@ -42,7 +42,8 @@ public class BoardController {
 	@PutMapping("/{id}")
 	public int updateDate(
 			@PathVariable(name = "id", required = true) Board board) {
-		return boardRepository.bulkDateUp(new Date(), board.getId());
+//		return boardRepository.bulkDateUp(new Date(), board.getId());
+		return 0;
 	}
 	
 	@GetMapping("/{id}")

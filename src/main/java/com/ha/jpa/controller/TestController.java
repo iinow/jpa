@@ -1,7 +1,10 @@
 package com.ha.jpa.controller;
 
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,12 +13,15 @@ import javax.persistence.EntityTransaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
 
 import com.ha.jpa.entity.Academy;
 import com.ha.jpa.repository.AcademyRepository;
@@ -41,14 +47,28 @@ public class TestController {
 	
 	@Autowired
 	EntityManagerFactory factory;
+
+	private ExecutorService executor = Executors.newSingleThreadExecutor();
 	
-	@GetMapping("test")
-	public String getString() {
+	@GetMapping(path = "test", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	public SseEmitter getString() {
 //		JPAQuery query = new JPAQuery(manager);
-		
-		
-//		query.from
-		return "Hello world";
+		SseEmitter emitter = new SseEmitter();
+		executor.execute(()->{
+			try {
+				for(int i = 0; true; i++) {
+					SseEventBuilder event = SseEmitter.event()
+							.data("SSE DATA - "+LocalTime.now().toString())
+							.id(String.valueOf(i))
+							.name("sse event - data");
+					emitter.send(event);
+					Thread.sleep(1000);
+				}				
+			} catch (Exception e) {
+				emitter.completeWithError(e);
+			}
+		});
+		return emitter;
 	}
 	
 	@PostMapping("academy/")

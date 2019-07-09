@@ -28,8 +28,12 @@ public interface BoardRepository extends JpaRepository<Board, Long>{
 	@Query(value = "SELECT * FROM BOARD WHERE id = ?0", nativeQuery = true)
 	List<Board> findByHello2(@Param("id") long i);
 	
-	@Transactional
-	@Modifying(clearAutomatically = true)
-	@Query(value = "update Board b set b.date = :date where b.id = :id")
-	int bulkDateUp(@Param("date") Date date, @Param("id") long id);
+	/*
+	 * @Transactional
+	 * 
+	 * @Modifying(clearAutomatically = true)
+	 * 
+	 * @Query(value = "update Board b set b.date = :date where b.id = :id") int
+	 * bulkDateUp(@Param("date") Date date, @Param("id") long id);
+	 */
 }
