@@ -21,3 +21,13 @@ spring:
 #    mongodb:
 #      uri: "mongodb://192.168.1.232:27017"
 #      database: "ha"
+
+app:
+  email:
+    naver:
+      host: smtp.naver.com
+      port: 587
+    
+    gmail:
+      host: smtp.gmail.com
+      port: 465

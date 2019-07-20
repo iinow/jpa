@@ -397,4 +397,11 @@ public class TestMain {
 		}
 		
 	}
+	
+	@Test
+	public void ddd() {
+		System.out.println("Hello");
+		assert true;
+		System.out.println("world");
+	}
 }
