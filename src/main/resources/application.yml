@@ -11,12 +11,14 @@ spring:
     allow-bean-definition-overriding: true
     
   datasource:
-#    url: jdbc:mysql://192.168.1.113:3307/test?useUnicode=true
-    url: jdbc:mysql://192.168.167.15:3307/test?useUnicode=true
-    username: root
-#    password: qweqweqwe2
-    password: qlalfqjsghekd
-    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://remotemysql.com:3306/oIDj79884W
+    username: oIDj79884W
+    password: OmzIpgbOkP
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.167.15:3307/test?useUnicode=true
+#    username: root
+#    password: qlalfqjsghekd
+#    driver-class-name: org.mariadb.jdbc.Driver
 #  data:
 #    mongodb:
 #      uri: "mongodb://192.168.1.232:27017"

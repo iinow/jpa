@@ -8,11 +8,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Scanner;
 import java.util.Stack;
 import java.util.TreeMap;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import org.apache.tomcat.util.http.fileupload.util.Streams;
 import org.junit.Test;
 
 public class TestMain {
@@ -403,5 +406,63 @@ public class TestMain {
 		System.out.println("Hello");
 		assert true;
 		System.out.println("world");
+	}
+	
+	@Test
+	public void dddd() {
+		
+		//49 60 57
+		//13 89 99
+		
+		
+		int[][] arr = {{26, 40, 83}, {49, 60, 57}, {13, 89, 99}};
+		Map<Integer, Integer> map = new TreeMap<>();
+		int sum = 0;
+		int preindex = 0;
+		
+		for(int i = 0; i < arr.length; i++) {
+			for(int j = 0; j < arr[i].length; j++) {
+				map.put(arr[i][j], j);
+			}
+			if(i == 0) {
+				int key = map.keySet().iterator().next();
+				sum += key;
+				preindex = map.get(key);
+			}else {
+				Iterator<Integer> iter = map.keySet().iterator();
+				while(iter.hasNext()) {
+					int key = iter.next();
+					if(map.get(key) == preindex) {
+						continue;
+					}
+					sum += key;
+					preindex = map.get(key);
+					break;
+				}
+			}
+			map.clear();
+		}
+		System.out.println("sum :"+sum);
+	}
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int cnt = scanner.nextInt();
+		int[][] arr = new int[cnt][3];
+		
+		for(int i = 0; i < cnt; i++) {
+			for(int j = 0; j < 3; j++) {
+				arr[i][j] = scanner.nextInt();
+			}
+		}
+		
+		Arrays.stream(arr).forEach(ar -> {
+			System.out.println(ar[0]+", "+ar[1]+", "+ar[2]);
+		});
+//		String[] arr = scanner.nextLine().split(" ");
+//		System.out.println("cnt : "+cnt);
+//		for(String str: arr) {
+//			System.out.println(str);
+//		}
 	}
 }
