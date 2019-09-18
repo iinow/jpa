@@ -44,7 +44,7 @@ public class JpaApplicationTests {
 	}
 	
 	@Test
-	public void 네임드쿼리사용() {
+	public void useNamedQuery() {
 //		EntityManager manager = entityManagerFactory.createEntityManager();
 		List<Board> list =  entityManager.createNamedQuery("Board.findByHello", Board.class)
 			.setParameter("id", (long)1)
@@ -54,14 +54,14 @@ public class JpaApplicationTests {
 	}
 	
 	@Test
-	public void 네임드쿼리사용2() {
+	public void useNamedQuery2() {
 		List<Board> list = repository.findByHello(1);
 		Hibernate.initialize(list);
 		list.forEach(System.out::println);
 	}
 	
 	@Test
-	public void 업데이트쿼리() {
+	public void updateQuery() {
 		List<Board> list = repository.findByHello(1);
 		list.forEach(System.out::println);
 		

@@ -39,7 +39,7 @@ public class TestMain {
 	}
 	
 	@Test
-	public void ¹è¿­() {
+	public void array() {
 		String[] participant = {"leo", "kiki", "eden"};
 		String[] completion = {"eden", "kiki"};
 		
@@ -68,18 +68,18 @@ public class TestMain {
 	}
 	
 	@Test
-	public void ±æÀÌ() {
+	public void length() {
 		String s = "a";
 		char[] chars = s.toCharArray();
 		int length = chars.length;
 		String res = null;
 		if(length % 2 == 0) {
-			//Â¦¼ö
+			//Â¦ï¿½ï¿½
 			int first = length / 2 - 1;
 			int second = first + 1;
 			res = String.valueOf(chars[first]) + String.valueOf(chars[second]);
 		}else {
-			//È¦¼ö
+			//È¦ï¿½ï¿½
 			int mid = length / 2;
 			res = String.valueOf(chars[mid]);
 		}
@@ -87,7 +87,7 @@ public class TestMain {
 	}
 	
 	@Test
-	public void ÀÎµ¦½º() {
+	public void index() {
 		int[] array = {1,5,2,6,3,7,4};
 		int[][] commands = {{2,5,3}, {4,4,1}, {1,7,3}};
 		
@@ -121,7 +121,7 @@ public class TestMain {
 	}
 	
 	@Test
-	public void ³Î¶Ù±â() {
+	public void jump() {
 		int n = 3;
 		
 		int d = n / 2;
@@ -143,7 +143,7 @@ public class TestMain {
 	}
 	
 	@Test
-	public void ¸ğÀÇ°í»ç() {
+	public void exam() {
 		int[] answers = {1,3,2,4,2};
 		List<Integer> firstlist = Arrays.asList(5,1,2,3,4);
 		List<Integer> secondlist = Arrays.asList(5,2,1,2,3,2,4,2);
@@ -192,7 +192,7 @@ public class TestMain {
 	}
 	
 	@Test
-	public void °ø¹é() {
+	public void blank() {
 		String s = "1 2 3 4";
 		String[] strs = s.split(" ");
 		
@@ -214,7 +214,7 @@ public class TestMain {
 	}
 	
 	@Test
-	public void Çà·Ä°ö¼À() {
+	public void arrayMulti() {
 		int[][] arr1 = {{1,2,3}, {2,3,4}};
 		int[][] arr2 = {{3,4},{5,6},{3,4}};
 		
@@ -235,7 +235,7 @@ public class TestMain {
 	}
 	
 	@Test
-	public void ¿ì¼±Å½»ö() {
+	public void prioritySearch() {
 		int[] numbers = {1,1,1,1,1};
 		int target = 3;
 		
@@ -262,7 +262,7 @@ public class TestMain {
 	 */
 	
 	@Test
-	public void µÎÁ¤¼öÇÕ() {
+	public void sum() {
 		int a = 0, b = 0;
 		
 		if(a == b) {
@@ -274,9 +274,9 @@ public class TestMain {
 		
 	}
 	
-	//¿¡¶óÅä½ºÅ×³×ÀÇ Ã¼ ¾Ë°í¸®Áò ¾Æ·¡²¨°¡ ¾Æ´Ô ½ÃÀÛÁ¡ ºÎÅÍ Á¦°ö±ÙÀ¸·Î ·çÇÁ µ¹·Á¼­ ±¸ÇÔ
+	//ì—ë¼í† ìŠ¤í…Œë„¤ì˜ ì²´ ì•Œê³ ë¦¬ì¦˜ ì•„ë˜êº¼ê°€ ì•„ë‹˜ ì‹œì‘ì  ë¶€í„° ì œê³±ê·¼ìœ¼ë¡œ ë£¨í”„ ëŒë ¤ì„œ êµ¬í•¨
 	@Test
-	public void ¼Ò¼öÃ£±â() {
+	public void findSosu() {
 		long stime = System.currentTimeMillis();
 		int n = 10;
 		int cnt = 0;
@@ -299,12 +299,12 @@ public class TestMain {
 	}
 	
 	@Test
-	public void ´õ¸Ê°³() {
+	public void spicy() {
 		int[] scoville = {1,2,3,9,10,12};
 		int K = 7;
 		
-		//int scofil = °¡Àå ¾È¸Å¿î°Å + (µÎ¹øÂ°·Î ¾È¸Å¿î°Å * 2);
-		//ÀüºÎ´Ù ´õ Çß´Âµ¥µµ k °ªÀ» ³ÑÁö ¸øÇÏ¸é return -1;
+		//int scofil = ê°€ì¥ ì•ˆë§¤ìš´ê±° + (ë‘ë²ˆì§¸ë¡œ ì•ˆë§¤ìš´ê±° * 2);
+		//ì „ë¶€ë‹¤ ë” í–ˆëŠ”ë°ë„ k ê°’ì„ ë„˜ì§€ ëª»í•˜ë©´ return -1;
 		
 		List<Integer> list = Arrays.stream(scoville).boxed().collect(Collectors.toList());
 		/*
@@ -355,7 +355,7 @@ public class TestMain {
 	}
 	
 	@Test
-	public void ·¹ÀÌÀú¹®Á¦() {
+	public void lazer() {
 //		String arrangement = "()(((()())(())()))(())";
 		String arrangement = "((()))";
 		String res = arrangement.replaceAll("\\(\\)", "0");
@@ -379,7 +379,7 @@ public class TestMain {
 	}
 	
 	@Test
-	public void ÇÁ¸°ÅÍ() {
+	public void print() {
 		int loc = 2;
 		int[] priorities = {2,1,3,2};
 		int value = priorities[loc];
